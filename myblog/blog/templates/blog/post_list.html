@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+  <h1 class='greeting'>Welcome Back {{ user.username }}!</h1>
+{% else %}
+  <h1 class='greeting'>Welcome To My Blog!</h1>
+{% endif %}
+
+
+<div class="centerstage">
+  {% for post in post_list %}
+  <div class="post">
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <div class="date">
+      <p>Published on: {{post.published_date|date:'d-m-Y'}}</p>
+    </div>
+    <a href="{% url 'post_detail' pk=post.pk %}"> Comments:{{ post.approve_comments.count }} </a>
+
+
+  </div>
+  {% endfor %}
+
+
+
+</div>
+{% endblock %}

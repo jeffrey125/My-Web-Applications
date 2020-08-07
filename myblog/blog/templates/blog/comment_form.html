@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% load bootstrap4 %}
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+
+        <div class="loader">
+          <h1>New comment</h1>
+          <form method="POST" class="post-form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button type="submit" class="save btn btn-primary">Post Comment</button>
+          </form>
+
+            <script>var editor = new MediumEditor('.editable');</script>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

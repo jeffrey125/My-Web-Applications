@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome!</title>
+    <!-- Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/blog1.css' %}">
+    <!-- Medium style editor -->
+    <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+
+
+
+
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="loader sidebar-header">
+                <h4>My Github Repositories</h4>
+            </div>
+
+            <ul class="list-unstyled components">
+
+
+                <li>
+                  <a class='neon' href="https://github.com/jeffrey125/Mall-Customer-Segmentation">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Data Science
+                  </a>
+                </li>
+                <br>
+                <li>
+                  <a class='neon' href="https://github.com/jeffrey125/Olympics-Data-Visualization">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Data Visualization
+                  </a>
+                </li>
+                <br>
+                <li>
+                  <a class='neon' href="https://github.com/jeffrey125/Mobile-Network-Checker">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Python GUI Tkinter
+                  </a>
+                </li>
+                <br>
+                <br>
+                <li>
+                  <a class='neon' href="https://github.com/jeffrey125/My-Web-Applications">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          Web Applications
+                  </a>
+                </li>
+                <br>
+            </ul>
+        </nav>
+
+
+        <div id="content">
+
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark techfont">
+              <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class=" loader btn btn-primary">
+                    <span>Toggle Sidebar</span>
+                </button>
+
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+
+                          <a id='JA_brand' class="navbar-brand" href="{% url 'post_list' %}"> <img src="{% static 'images/logo.jpg' %}"> My Blog</a>
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+
+                          <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                          </li>
+
+
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile Sites</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                              <a class="dropdown-item" href="https://myjobstreet.jobstreet.com.ph/resume/preview-resume.php?x=sr6bhc94vv0ndbl6dninl0gu90">Jobstreet Profile</a>
+                              <a class="dropdown-item" href="https://jobseeker.kalibrr.com/candidate/profile">Kalibrr Profile</a>
+                              <a class="dropdown-item" href="https://www.linkedin.com/in/jeffrey-asilo-3a53ba1ab/">LinkedIn Profile</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="https://github.com/jeffrey125?tab=repositories">Github</a>
+                            </div>
+                          </li>
+
+
+                          <div class="navbar-nav align-items-center ml-auto">
+                            {% if user.is_authenticated %}
+                              <a class="nav-item nav-link" href="{% url 'post_new' %}">New Post</a>
+                              <a class="nav-item nav-link" href="{% url 'post_draft_list' %}">Drafts</a>
+                              <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+                              <a class='loader btn btn-primary' href="{% url 'post_list' %}">Welcome: {{ user.username }}</a>
+                            {% else %}
+                              <a class="nav-item nav-link" href="{% url 'login' %}" aria-label="Login">
+                                <span class="fa fa-user" aria-hidden="true"></span></a>
+                            {% endif %}
+                          </div>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- body content -->
+            <div class="content container">
+                        {% block content %}
+                        {% endblock %}
+                </div>
+            </div>
+          </div>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

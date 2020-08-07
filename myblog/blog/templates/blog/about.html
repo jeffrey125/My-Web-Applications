@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+<div class="row">
+  <div class="col">
+    <div class="loader jumbotron horizontal-center">
+      <h1>About me:</h1>
+
+        <p>
+        I am Jeffrey Asilo an alumni of UST College of Commerce with a degree of Business Administration Major in Marketing
+        I'm currently interested in Web development and I have completed many Online courses through the help of Udemy and Coursera,
+        I have knowledge in HTML, CSS, Javascript, JQuery, DOM, SQL, Django and Many more Please refer to my <a href="https://drive.google.com/file/d/12JAEMOAxFhHaFJUWqdnH6lw_2Kvp5JHJ/view?usp=sharing">Resume</a>
+        to know more about my skillset. Thank you for visiting my blog and enjoy!
+        </p>
+
+      </div>
+  </div>
+  <div class="col">
+    <img class='dp' src="{% static 'images/dp.jpg' %}" height='500px' width="350px">
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
